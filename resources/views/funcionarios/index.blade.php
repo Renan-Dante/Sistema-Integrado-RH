@@ -3,9 +3,13 @@
 @section('title', 'Funcionários - SIS ')
 
 @section('content')
-     <x-btn-creat/>
+     <x-btn-create>
+        <x-slot name="route">/funcionarios/novo</x-slot>
+        <x-slot name="title">Cadastrar Funcionário</x-slot>
+     </x-btn-create>
 
     <h1 class="f-2 mb-3">Funcionários</h1>
+
     <table class="table table-striped">
         <thead class="table-dark">
             <tr>
@@ -21,8 +25,8 @@
             <tr class="text-center">
                 <th scope="row">1</th>
                 <td>Foto</td>
-                <td>Giovanna</td>
-                <td>Analista de QA</td>
+                <td>Renan Dante</td>
+                <td>Software Developer</td>
                 <td>Sistemas de Informações</td>
                 <td> 
                     <a href="" title="Editar" class="btn btn-primary"> <i class="bi bi-pen"></i></a>
