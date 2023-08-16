@@ -4,7 +4,7 @@
 
 @section('content')
      <x-btn-create>
-        <x-slot name="route">/funcionarios/novo</x-slot>
+        <x-slot name="route">{{ route('funcionarios.create') }}</x-slot>
         <x-slot name="title">Cadastrar Funcionário</x-slot>
      </x-btn-create>
 
@@ -28,12 +28,12 @@
                 <td>Renan Dante</td>
                 <td>Software Developer</td>
                 <td>Sistemas de Informações</td>
-                <td> 
+                <td>
                     <a href="" title="Editar" class="btn btn-primary"> <i class="bi bi-pen"></i></a>
                     <a href="" title="Deltar" class="btn btn-danger"> <i class="bi bi-trash"></i></a>
                 </td>
             </tr>
-           
+
         </tbody>
     </table>
 @endsection
