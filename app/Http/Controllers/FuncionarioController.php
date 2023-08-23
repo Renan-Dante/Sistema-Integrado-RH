@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Departamento;
 use App\Models\Cargo;
+use App\Models\Funcionario;
 use Illuminate\Http\Request;
 
 class FuncionarioController extends Controller
@@ -13,8 +14,10 @@ class FuncionarioController extends Controller
      */
     public function index()
     {
+        $funcionarios = Funcionario::all()->sortBy('nome');
+
         // Receber os dados do banco através do model
-        return view('funcionarios.index');
+        return view('funcionarios.index', compact('funcionarios'));
     }
 
     /**
@@ -34,7 +37,14 @@ class FuncionarioController extends Controller
     public function store(Request $request)
     {
         $input = $request->toArray();
-        dd($input);
+        // dd($input);
+
+        $input['user_id'] = 1;
+
+        // Insert de dados do usuário no banco
+        Funcionario::create($input);
+
+        return redirect()->route('funcionarios.index')->with('sucesso','Funcionário Cadastrado com Sucesso');
     }
 
     /**

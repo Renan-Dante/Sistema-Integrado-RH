@@ -10,9 +10,13 @@
 
     <h1 class="f-2 mb-3">Funcionários</h1>
 
+    @if (Session::get('sucesso'))
+     <div class="alert alert-success text-center">{{ Session::get('sucesso') }}</div>
+    @endif
+
     <table class="table table-striped">
         <thead class="table-dark">
-            <tr>
+            <tr class="text-center">
                 <th scope="col">ID</th>
                 <th scope="col">Foto</th>
                 <th scope="col">Nome</th>
@@ -22,18 +26,25 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="text-center">
-                <th scope="row">1</th>
-                <td>Foto</td>
-                <td>Renan Dante</td>
-                <td>Software Developer</td>
-                <td>Sistemas de Informações</td>
-                <td>
-                    <a href="" title="Editar" class="btn btn-primary"> <i class="bi bi-pen"></i></a>
-                    <a href="" title="Deltar" class="btn btn-danger"> <i class="bi bi-trash"></i></a>
-                </td>
-            </tr>
-
+            @foreach ($funcionarios as $funcionario)
+                <tr class="align-middle">
+                    <th scope="row" class="text-center">{{ $funcionario->id }}</th>
+                    <td class="text-center">
+                        @if (empty($funcionario->foto))
+                            <img src="/images/sombra_funcionario.jpg" alt="Foto" class="img-thumbnail" width="70">
+                        @else
+                            <img src="" alt="Fotos" class="img-thumbnail" width="70">
+                        @endif
+                    </td>
+                    <td>{{ $funcionario->nome }}</td>
+                    <td class="text-center">{{ $funcionario->cargo->descricao }}</td>
+                    <td class="text-center">{{ $funcionario->departamento->nome }}</td>
+                    <td>
+                        <a href="" title="Editar" class="btn btn-primary"> <i class="bi bi-pen"></i></a>
+                        <a href="" title="Deltar" class="btn btn-danger"> <i class="bi bi-trash"></i></a>
+                    </td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
 @endsection
