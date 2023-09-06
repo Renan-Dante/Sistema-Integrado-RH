@@ -115,6 +115,16 @@ class FuncionarioController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $funcionario = Funcionario::find($id);
+        // dd($funcionario);
+
+        //Exclui a foto do funcionário
+        if($funcionario['foto'] != null) {
+            Storage::delete('public/funcionarios/'.$funcionario['foto']);
+        }
+        //Apagando o registro no banco de dados
+        $funcionario->delete();
+
+        return redirect()->route('funcionarios.index')->with('sucesso', 'Funcionário excluido com sucesso.');
     }
 }
