@@ -21,7 +21,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link text-white btn btn-primary text-start">
+            <a href="{{ route('departamentos.index') }}" class="nav-link text-white btn btn-primary text-start">
                 <i class="bi bi-house-gear-fill mx-2 fs-5 align-middle"></i>Departamentos
             </a>
         </li>

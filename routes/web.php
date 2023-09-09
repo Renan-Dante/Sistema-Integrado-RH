@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DepartamentoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FuncionarioController;
 
@@ -25,3 +26,10 @@ Route::post('/funcionarios', [FuncionarioController::class, 'store'])->name('fun
 Route::get('/funcionarios/{id}/edit', [FuncionarioController::class, 'edit'])->name('funcionarios.edit');
 Route::put('/funcionarios/{id}', [FuncionarioController::class, 'update'])->name('funcionarios.update');
 Route::delete('/funcionarios/{id}', [FuncionarioController::class, 'destroy'])->name('funcionarios.destroy');
+
+Route::get('/departamentos', [DepartamentoController::class, 'index'])->name('departamentos.index');
+Route::get('/departamentos/create', [DepartamentoController::class, 'create'])->name('departamentos.create');
+Route::post('/departamentos', [DepartamentoController::class, 'store'])->name('departamentos.store');
+Route::get('/departamentos/{id}/edit', [DepartamentoController::class, 'edit'])->name('departamentos.edit');
+Route::put('/departamentos/{id}', [DepartamentoController::class, 'update'])->name('departamentos.update');
+Route::delete('/departamentos/{id}', [DepartamentoController::class, 'destroy'])->name('departamentos.destroy');
