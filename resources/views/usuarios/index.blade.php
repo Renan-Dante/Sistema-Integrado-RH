@@ -10,9 +10,16 @@
 
     <h1 class="f-2 mb-3">Usuários</h1>
 
+    <p>Total de Usuários: {{ $totalUsuarios }}</p>
+
     @if (Session::get('sucesso'))
      <div class="alert alert-success text-center">{{ Session::get('sucesso') }}</div>
     @endif
+
+    <x-busca>
+        <x-slot name="rota">{{ route('usuarios.index') }}</x-slot>
+        <x-slot name="tipo">Usuario</x-slot>
+    </x-busca>
 
     <table class="table table-striped">
         <thead class="table-dark">
@@ -48,4 +55,12 @@
             @endforeach
         </tbody>
     </table>
+
+    <style>
+        .pagination{
+            justify-content: center;
+        }
+    </style>
+    {{ $usuarios->links() }}
+
 @endsection

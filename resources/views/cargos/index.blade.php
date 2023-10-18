@@ -10,9 +10,16 @@
 
     <h1 class="f-2 mb-3">Cargos</h1>
 
+    <p>Total de Cargos: {{ $totalCargos }}</p>
+
     @if (Session::get('sucesso'))
      <div class="alert alert-success text-center">{{ Session::get('sucesso') }}</div>
     @endif
+
+    <x-busca>
+        <x-slot name="rota">{{ route('cargos.index') }}</x-slot>
+        <x-slot name="tipo">Cargo</x-slot>
+    </x-busca>
 
     <table class="table table-striped">
         <thead class="table-dark">
@@ -42,4 +49,12 @@
             @endforeach
         </tbody>
     </table>
+
+    <style>
+        .pagination{
+            justify-content: center;
+        }
+    </style>
+    {{ $cargos->links() }}
+
 @endsection

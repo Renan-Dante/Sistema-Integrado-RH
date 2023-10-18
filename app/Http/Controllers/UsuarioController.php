@@ -10,12 +10,14 @@ class UsuarioController extends Controller
      /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $usuarios = User::all()->sortBy('name');
+        $usuarios = User::where('name', 'like', '%'.$request->busca.'%')->orderby('name', 'asc')->paginate(3);
+
+        $totalUsuarios = User::all()->count();
 
         // Receber os dados do banco através do model
-        return view('usuarios.index', compact('usuarios'));
+        return view('usuarios.index', compact('usuarios', 'totalUsuarios'));
     }
 
     /**
