@@ -6,6 +6,12 @@ use Illuminate\Http\Request;
 
 class BeneficioController extends Controller
 {
+    /* Verificar se o usuário estar logado no sistema */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      */

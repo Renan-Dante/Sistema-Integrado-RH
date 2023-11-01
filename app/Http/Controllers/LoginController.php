@@ -32,4 +32,12 @@ class LoginController extends Controller
             return redirect()->back()->with('erro_login', 'E-mail ou senha inválido');
         }
     }
+    // Função para deslogar o usuário logado
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('login.index');
+    }
 }
