@@ -1,6 +1,6 @@
 @extends('layouts.default')
 
-@section('title', 'Departamentos - SIS ')
+@section('title', 'Departamentos - SISRH ')
 
 @section('content')
      <x-btn-create>

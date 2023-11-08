@@ -1,6 +1,6 @@
 @extends('layouts.default')
 
-@section('title', 'Usuários - SIS ')
+@section('title', 'Usuários - SISRH ')
 
 @section('content')
      <x-btn-create>
@@ -27,7 +27,6 @@
                 <th scope="col">ID</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Email</th>
-                <th scope="col">Senha</th>
                 <th scope="col">Tipo</th>
                 <th scope="col" width="110">Ações</th>
             </tr>
@@ -38,7 +37,6 @@
                     <th scope="row" class="text-center">{{ $usuario->id }}</th>
                     <td class="text-center">{{ $usuario->name }}</td>
                     <td class="text-center">{{ $usuario->email }}</td>
-                    <td class="text-center">{{ $usuario->password }}</td>
                     <td class="text-center">{{ $usuario->tipo }}</td>
                     <td>
                         <a href="{{ route('usuarios.edit', $usuario->id) }}" title="Editar" class="btn btn-primary"> <i class="bi bi-pen"></i></a>
