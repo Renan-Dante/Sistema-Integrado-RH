@@ -82,7 +82,7 @@ class CargoController extends Controller
 
         $cargo->fill($input);
         $cargo->save();
-        return redirect()->route('cargos.index')->with('Sucesso', 'Cargo alterado com sucesso!');
+        return redirect()->route('cargos.index')->with('sucesso', 'Cargo alterado com sucesso!');
     }
 
     /**

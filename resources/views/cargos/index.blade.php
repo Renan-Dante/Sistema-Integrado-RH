@@ -38,7 +38,7 @@
                     <td class="text-center" class="text-center">{{ $cargo->funcionariosAtivos->count() }}</td>
                     <td>
                         <a href="{{ route('cargos.edit', $cargo->id) }}" title="Editar" class="btn btn-primary"> <i class="bi bi-pen"></i></a>
-                        <a href="" title="Deletar" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-delete-#"><i class="bi bi-trash"></i></a>
+                        <a href="cargos.destroy" title="Deletar" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-delete-{{ $cargo->id }}"><i class="bi bi-trash"></i></a>
                         {{-- Inserir o componente modal na view --}}
                         <x-modal-delete>
                             <x-slot name="id">{{ $cargo->id }}</x-slot>

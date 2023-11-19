@@ -63,7 +63,7 @@ class FuncionarioController extends Controller
         if($request->beneficios){
             $funcionario->beneficios()->attach($request->beneficios);
         }
-
+        
         return redirect()->route('funcionarios.index')->with('sucesso','Funcionário Cadastrado com Sucesso');
     }
     // Função para redimensionar e realizar o upload da foto
@@ -132,7 +132,7 @@ class FuncionarioController extends Controller
 
         $funcionario->fill($input);
         $funcionario->save();
-        return redirect()->route('funcionarios.index')->with('Sucesso', 'Funcionário alterado com sucesso!');
+        return redirect()->route('funcionarios.index')->with('sucesso', 'Funcionário alterado com sucesso!');
     }
 
     /**
