@@ -21,14 +21,6 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
-
-        // Inserir um registro de usuário
-        User::create([
-            'name' => 'Admin',
-            'email' => 'admin@gmail.com',
-            'tipo' => 'admin',
-            'password' => bcrypt('123456')
-        ]);
     }
 
     /**
