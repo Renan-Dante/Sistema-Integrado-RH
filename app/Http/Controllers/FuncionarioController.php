@@ -39,7 +39,7 @@ class FuncionarioController extends Controller
         //Retornar o formulário do Cadastro de funcionário
         $departamentos = Departamento::all()->sortBy('nome');
         $cargos = Cargo::all()->sortBy('descricao');
-        $beneficios = Beneficio::all()->sortBy('descricao');
+        $beneficios = Beneficio::where('status','on')->orderby('descricao')->get();
         return view('funcionarios.create', compact('departamentos','cargos','beneficios'));
     }
 
@@ -63,7 +63,7 @@ class FuncionarioController extends Controller
         if($request->beneficios){
             $funcionario->beneficios()->attach($request->beneficios);
         }
-        
+
         return redirect()->route('funcionarios.index')->with('sucesso','Funcionário Cadastrado com Sucesso');
     }
     // Função para redimensionar e realizar o upload da foto
@@ -101,7 +101,7 @@ class FuncionarioController extends Controller
 
         $departamentos = Departamento::all()->sortBy('nome');
         $cargos = Cargo::all()->sortBy('descricao');
-        $beneficios = Beneficio::all()->sortBy('descricao');
+        $beneficios = Beneficio::where('status','on')->orderby('descricao')->get();
 
         $beneficio_selecionados = [];
 

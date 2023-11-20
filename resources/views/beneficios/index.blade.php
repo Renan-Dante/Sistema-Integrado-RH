@@ -16,6 +16,10 @@
      <div class="alert alert-success text-center">{{ Session::get('sucesso') }}</div>
     @endif
 
+    @if (Session::get('erro'))
+    <div class="alert alert-danger text-center">{{ Session::get('erro') }}</div>
+   @endif
+
     <x-busca>
         <x-slot name="rota">{{ route('beneficios.index') }}</x-slot>
         <x-slot name="tipo">Beneficio</x-slot>
@@ -35,8 +39,8 @@
                     <th scope="row" class="text-center">{{ $beneficio->id }}</th>
                     <td class="text-center">{{ $beneficio->descricao }}</td>
                     <td>
-                        <a href="{{ route('beneficios.edit', $beneficio->id) }}" title="Editar" class="btn btn-primary"> <i class="bi bi-pen"></i></a> 
-                        <a href="beneficios.destroy" title="Deletar" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-delete-{{ $beneficio->id }}"><i class="bi bi-trash"></i></a> 
+                        <a href="{{ route('beneficios.edit', $beneficio->id) }}" title="Editar" class="btn btn-primary"> <i class="bi bi-pen"></i></a>
+                        <a href="beneficios.destroy" title="Deletar" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-delete-{{ $beneficio->id }}"><i class="bi bi-trash"></i></a>
                         {{-- Inserir o componente modal na view --}}
                         <x-modal-delete>
                             <x-slot name="id">{{ $beneficio->id }}</x-slot>
