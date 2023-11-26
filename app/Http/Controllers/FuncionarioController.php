@@ -37,8 +37,8 @@ class FuncionarioController extends Controller
     public function create()
     {
         //Retornar o formulário do Cadastro de funcionário
-        $departamentos = Departamento::all()->sortBy('nome');
-        $cargos = Cargo::all()->sortBy('descricao');
+        $departamentos = Departamento::where('status','on')->orderby('nome')->get();
+        $cargos = Cargo::where('status','on')->orderby('descricao')->get();
         $beneficios = Beneficio::where('status','on')->orderby('descricao')->get();
         return view('funcionarios.create', compact('departamentos','cargos','beneficios'));
     }

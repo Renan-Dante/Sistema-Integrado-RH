@@ -90,12 +90,19 @@ class CargoController extends Controller
      */
     public function destroy(string $id)
     {
-        $cargo = Cargo::find($id);
-        // dd($funcionario);
+        $cargo = Cargo::with('funcionariosAtivos')->find($id);
 
-        //Apagando o registro no banco de dados
-        $cargo->delete();
+        if ($cargo) {
+            $funcionariosRelacionados = $cargo->funcionariosAtivos;
 
-        return redirect()->route('cargos.index')->with('sucesso', 'Cargo excluido com sucesso.');
+            if ($funcionariosRelacionados->isEmpty()) {
+                $cargo->delete();
+                return redirect()->route('cargos.index')->with('sucesso', 'Cargo excluído com sucesso.');
+            } else {
+                return redirect()->route('cargos.index')->with('erro', 'Não é possível excluir o cargo, pois está vinculado a funcionários.');
+            }
+        }
+
+        return redirect()->route('cargos.index')->with('erro', 'Cargo não encontrado.');
     }
 }
