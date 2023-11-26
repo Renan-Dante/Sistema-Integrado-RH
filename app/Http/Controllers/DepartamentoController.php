@@ -89,12 +89,18 @@ class DepartamentoController extends Controller
      */
     public function destroy(string $id)
     {
-        $departamento = Departamento::find($id);
-        // dd($funcionario);
+        $departamento = Departamento::with('funcionariosAtivos')->find($id);
 
-        //Apagando o registro no banco de dados
-        $departamento->delete();
+        if ($departamento) {
+            $funcionariosRelacionados = $departamento->funcionariosAtivos;
 
-        return redirect()->route('departamentos.index')->with('sucesso', 'Departamento excluido com sucesso.');
+            if ($funcionariosRelacionados->isEmpty()) {
+                $departamento->delete();
+                return redirect()->route('departamentos.index')->with('sucesso', 'Departamento excluído com sucesso.');
+            } else {
+                return redirect()->route('departamentos.index')->with('erro', 'Não é possível excluir o departamento, pois está vinculado a funcionários.');
+            }
+        }
+        return redirect()->route('departamentos.index')->with('erro', 'Departamento não encontrado.');
     }
 }

@@ -16,6 +16,10 @@
      <div class="alert alert-success text-center">{{ Session::get('sucesso') }}</div>
     @endif
 
+    @if (Session::get('erro'))
+    <div class="alert alert-danger text-center">{{ Session::get('erro') }}</div>
+   @endif
+
     <x-busca>
         <x-slot name="rota">{{ route('departamentos.index') }}</x-slot>
         <x-slot name="tipo">Departamento</x-slot>
