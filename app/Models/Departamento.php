@@ -9,7 +9,7 @@ class Departamento extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nome'];
+    protected $fillable = ['nome', 'status'];
 
     public function funcionariosAtivos()
     {

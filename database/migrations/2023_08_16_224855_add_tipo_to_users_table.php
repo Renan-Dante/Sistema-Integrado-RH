@@ -21,7 +21,7 @@ return new class extends Migration
             'name' => 'Admin',
             'email' => 'admin@gmail.com',
             'tipo' => 'admin',
-            'password' => bcrypt('123456')
+            'password' => bcrypt('123456'),
         ]);
     }
 
